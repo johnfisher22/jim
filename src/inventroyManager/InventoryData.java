@@ -21,7 +21,7 @@ public class InventoryData {
 	private String fileName = "inventory.log";
 
 	// ArrayList that stores the inventory items
-	protected static ArrayList<Items> items = new ArrayList<Items>();
+	private static ArrayList<Items> items = new ArrayList<Items>();
 
 	public static Scanner keyboardInput = new Scanner(System.in);
 
@@ -82,7 +82,7 @@ public class InventoryData {
 	 * 
 	 * @returns the updated item
 	 */
-	public static ArrayList<Items> setItems() {
+	public ArrayList<Items> setItems() {
 
 		System.out.println("Enter the id of item to update");
 
@@ -112,7 +112,7 @@ public class InventoryData {
 				System.out.println("Item not found!");
 
 			}
-			keyboardInput.close();
+
 		}
 		return items;
 	}
@@ -123,12 +123,12 @@ public class InventoryData {
 	 * @param anyItem the item object that is removed
 	 * @return boolean status of removed object
 	 */
-	public static boolean remove(Items anyItem) {
+	public boolean remove(Items anyItem) {
 		return items.remove(anyItem);
 	}
 
 	
-	public static void removeItem() {
+	public void removeItem() {
 
 		System.out.println("Enter id of the item to be removed");
 
@@ -151,7 +151,7 @@ public class InventoryData {
 
 				}
 		}
-		keyboardInput.close();
+
 	}
 
 	
@@ -177,7 +177,7 @@ public class InventoryData {
 	/**
 	 * @see void method clear()
 	 */
-	public static void clear() {
+	public void clear() {
 
 		items.clear();
 
@@ -268,7 +268,7 @@ public class InventoryData {
 	/**
 	 * @return all the items in the inventory
 	 */
-	public static ArrayList<Items> getItems() {
+	public ArrayList<Items> getItems() {
 
 		if (items.isEmpty()) {
 
@@ -284,7 +284,7 @@ public class InventoryData {
 	/**
 	 * @param anyItem the items in the inventory the user wants to view
 	 */
-	public static void viewItem(Items anyItem) {
+	public void viewItem(Items anyItem) {
 
 		if (items.isEmpty()) {
 
@@ -346,7 +346,6 @@ public class InventoryData {
 
 		} while (selectNumber > 0 && selectNumber < 4);
 		System.out.println("You exited addNewItem function!");
-		
 	}
 
 	
