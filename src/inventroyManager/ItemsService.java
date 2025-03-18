@@ -8,13 +8,13 @@ import java.util.Scanner;
  */
 public class ItemsService extends InventoryData {
 
-	InventoryData anyItem = new InventoryData();
+
 	BookItem book = new BookItem();
 	GroceryItem grocery = new GroceryItem();
 	ElectronicItem electronic = new ElectronicItem();
 	Items parentItem = new Items();
 
-	Scanner keyboardInput = new Scanner(System.in);
+	public static Scanner keyboardInput = new Scanner(System.in);
 
 	/**
 	 * @see void method userChoiseMenu()
@@ -23,19 +23,20 @@ public class ItemsService extends InventoryData {
 
 		int userChoice = 0;
 
-		String confirm = "";
+		char confirm =' ';
 
 		do {
 			Menu.showMenu();
 
 			try {
-
+                 System.out.println("Choose an option?");
+                 
 				userChoice = keyboardInput.nextInt();
 
 				switch (userChoice) {
 
 				case 1: // Create new item
-					anyItem.addNewItem();
+					super.addNewItem();
 					break;
 
 				case 2: // View inventory items list or inventory log
@@ -43,7 +44,7 @@ public class ItemsService extends InventoryData {
 					userChoice = keyboardInput.nextInt();
 
 					if (userChoice == 1) {
-						System.out.println(anyItem.getItems());
+						System.out.println(super.getItems());
 					}
 
 					else {
@@ -52,7 +53,7 @@ public class ItemsService extends InventoryData {
 					break;
 
 				case 3: // Update item
-					setItems();
+					super.setItems();
 					break;
 
 				case 4: // delete an items
@@ -60,18 +61,18 @@ public class ItemsService extends InventoryData {
 
 					System.out.println("Enter y to delete this item or n to quit");
 
-					confirm = keyboardInput.next();
+					confirm = keyboardInput.next().charAt(0);
 
-					if (confirm.equalsIgnoreCase("y")) {
-						anyItem.removeItem();
-
-					} else {
+					if (confirm == 'y'  || confirm == 'Y') { 
+						super.removeItem();
 						break;
-					}
+
+					} 
+			
 					break;
 
 				case 5: // Save item(s) to inventory log file
-					anyItem.saveInventoryLog(anyItem.getFileName());
+					super.saveInventoryLog(super.getFileName());
 					break;
 
 				case 6: // Clears all items in the inventory
@@ -79,14 +80,12 @@ public class ItemsService extends InventoryData {
 
 					System.out.println("Enter y to delete all items or n to quit");
 
-					confirm = keyboardInput.next();
+					confirm = keyboardInput.next().charAt(0);
 
-					if (confirm.equalsIgnoreCase("y")) {
-						anyItem.clear();
-					} else {
-						break;
-					}
-
+					if (confirm == 'y'  || confirm == 'Y') { 
+						super.clear();
+					} 
+					
 					break;
 
 				default:// Default
