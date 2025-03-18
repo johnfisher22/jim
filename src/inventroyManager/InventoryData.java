@@ -112,7 +112,7 @@ public class InventoryData {
 				System.out.println("Item not found!");
 
 			}
-
+			keyboardInput.close();
 		}
 		return items;
 	}
@@ -150,6 +150,7 @@ public class InventoryData {
 					System.out.println("Item not found!");
 
 				}
+			keyboardInput.close();
 		}
 
 	}
