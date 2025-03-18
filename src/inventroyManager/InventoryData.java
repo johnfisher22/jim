@@ -78,11 +78,7 @@ public class InventoryData {
 	}
 
 	
-	/**
-	 * 
-	 * @returns the updated item
-	 */
-	public ArrayList<Items> setItems() {
+     public static void setItems() {
 
 		System.out.println("Enter the id of item to update");
 
@@ -93,28 +89,30 @@ public class InventoryData {
 		String newId = keyboardInput.next();
 
 		for (Items itemsObj : items) {
-			if (itemsObj instanceof BookItem books) {
-				if (books.id.equals(itemId))
+			if (itemsObj instanceof BookItem books && books.getId().equals(itemId)) {
 					books.setId(newId);
-
+				System.out.println("\nUpdate was successful!\n" + books.toString());
+                     break;
 			}
 
-			else if (itemsObj instanceof ElectronicItem electronic) {
-				if (electronic.id.equals(itemId))
+			else if (itemsObj instanceof ElectronicItem electronic && electronic.getId().equals(itemId)) {
 					electronic.setId(newId);
-
+				System.out.println("\nUpdate was successful!\n" + electronic.toString());
+                    break;
 			}
 
-			else if (itemsObj instanceof GroceryItem grocery) {
-				if (grocery.id.equals(itemId))
+			else if (itemsObj instanceof GroceryItem grocery && grocery.getId().equals(itemId)) {
 					grocery.setId(newId);
-			} else {
+				System.out.println("\nUpdate was successful!\n" + grocery.toString());
+				    break;
+			} 
+			else {
 				System.out.println("Item not found!");
 
 			}
 			keyboardInput.close();
 		}
-		return items;
+	
 	}
 
 	
